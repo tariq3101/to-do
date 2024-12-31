@@ -37,7 +37,7 @@ const Signin = () => {
         if (!validateForm()) return;
 
         try {
-            const response = await axios.post(`http://localhost:5000/api/v1/login`, Inputs);
+            const response = await axios.post(`${import.meta.env.BACKEND_URL}/api/v1/login`, Inputs);
             const { message, others } = response.data;
 
             if (message === "Please signup first") {

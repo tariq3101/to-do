@@ -42,7 +42,7 @@ const Signup = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/register`, Inputs);
+      const response = await axios.post(`${import.meta.env.BACKEND_URL}/api/v1/register`, Inputs);
       if (response.data.message === "User Already Exists") {
         toast.error(response.data.message);
       } else {
