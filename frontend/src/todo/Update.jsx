@@ -19,7 +19,7 @@ const Update = ({ display, update }) => {
   const submit = async () => {
     if(id){
       await axios
-      .put(`${import.meta.env.BACKEND_URL}/api/v2/updateTask/${update._id}`, Inputs)
+      .put(`${process.env.REACT_APP_BACKEND_URL}/api/v2/updateTask/${update._id}`, Inputs)
       .then((response) => {
       toast.success(response.data.message)
       })

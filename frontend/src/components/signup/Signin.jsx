@@ -33,11 +33,13 @@ const Signin = () => {
     };
 
     const submit = async (e) => {
+        // console.log(`${process.env.REACT_APP_BACKEND_URL}`)
         e.preventDefault();
         if (!validateForm()) return;
 
         try {
-            const response = await axios.post(`${import.meta.env.BACKEND_URL}/api/v1/login`, Inputs);
+            // console.log(`${process.env.REACT_APP_BACKEND_URL}`)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/login`, Inputs);
             const { message, others } = response.data;
 
             if (message === "Please signup first") {

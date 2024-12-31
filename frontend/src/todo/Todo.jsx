@@ -27,14 +27,14 @@ const Todo = () => {
         } else {
             if (id) {
                 try {
-                    await axios.post(`${import.meta.env.BACKEND_URL}/api/v2/addTask`, {
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v2/addTask`, {
                         title: Inputs.title,
                         body: Inputs.body,
                         id: id,
                     });
                     setInputs({ title: "", body: "" });
                     toast.success("Your Task is Added");
-                    const response = await axios.get(`${import.meta.env.BACKEND_URL}/api/v2/getTasks/${id}`);
+                    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v2/getTasks/${id}`);
                     setArray(response.data.list);
                 } catch (error) {
                     toast.error("Error adding task!");
@@ -53,13 +53,13 @@ const Todo = () => {
     const del = async (Cardid) => {
         if (id) {
             try {
-                await axios.delete(`${import.meta.env.BACKEND_URL}/api/v2/deleteTask/${Cardid}`, {
+                await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v2/deleteTask/${Cardid}`, {
                     data: { id: id },
                 });
                 toast.success("Your Task is deleted");
     
                 
-                const response = await axios.get(`${import.meta.env.BACKEND_URL}/api/v2/getTasks/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v2/getTasks/${id}`);
                 setArray(response.data.list);
             } catch (error) {
                 toast.error("Error deleting task.");
@@ -83,7 +83,7 @@ const Todo = () => {
         const fetchTasks = async () => {
             if (id) {
                 try {
-                    const response = await axios.get(`${import.meta.env.BACKEND_URL}/api/v2/getTasks/${id}`);
+                    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v2/getTasks/${id}`);
                     setArray(response.data.list);
                 } catch (error) {
                     toast.error("Error fetching tasks.");

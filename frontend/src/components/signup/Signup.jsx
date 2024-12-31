@@ -42,7 +42,8 @@ const Signup = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/api/v1/register`, Inputs);
+      console.log(`${process.env.REACT_APP_BACKEND_URL}`)
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/register`, Inputs);
       if (response.data.message === "User Already Exists") {
         toast.error(response.data.message);
       } else {
@@ -51,6 +52,7 @@ const Signup = () => {
         history("/signin");
       }
     } catch (error) {
+      console.log(error)
       toast.error("Error registering user. Please try again.");
     }
   };
