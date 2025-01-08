@@ -18,6 +18,11 @@ const App = () => {
       dispatch(authActions.login())
     }
   }, [])
+  useEffect(() => {
+    // Initialize Google Analytics with your GA4 Measurement ID
+    ReactGA.initialize('G-MP15STX019'); // Replace with your actual GA4 Measurement ID
+    ReactGA.send('pageview'); // Send a pageview event when the app loads
+  }, []);
   return (
     <div>
       <Router>
